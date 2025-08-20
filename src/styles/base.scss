@@ -1,0 +1,43 @@
+:root, html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--pl-color-bg);
+  color: var(--pl-color-text);
+  font-family: var(--pl-font-sans);
+}
+
+/* accessibility helpers */
+.visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* globals built with variables + Tailwind compose */
+.card {
+  background: var(--pl-color-surface);
+  border: 1px solid var(--pl-color-border);
+  border-radius: var(--pl-radius-md);
+  box-shadow: var(--pl-shadow-1);
+  transition: transform var(--pl-dur-med) var(--pl-ease), box-shadow var(--pl-dur-med) var(--pl-ease);
+}
+
+.card--hoverlift {
+  @apply will-change-transform;
+}
+.card--hoverlift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pl-shadow-2);
+}
+
+.btn {
+  background: var(--pl-color-surface-2);
+  border: 1px solid var(--pl-color-border);
+  border-radius: var(--pl-radius-md);
+  padding: 8px 12px;
+  transition: all var(--pl-dur-med) var(--pl-ease);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--pl-color-primary);
+  outline-offset: 2px;
+}
+
+/* tiny animation for skeletons */
+@keyframes pl-pulse { 0%,100% { opacity:.6 } 50% { opacity:1 } }

@@ -1,0 +1,22 @@
+.root {
+  overflow: hidden;
+}
+
+.block {
+  background: color-mix(in oklab, var(--pl-color-surface-2) 80%, black 0%);
+  height: 12px;
+  border-radius: var(--pl-radius-sm);
+  animation: pl-pulse 1.5s infinite ease-in-out;
+}
+
+.thumb {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16/9;
+  background: var(--pl-color-surface-2);
+  animation: pl-pulse 1.5s infinite ease-in-out;
+}
+
+.meta { padding: 12px; display: grid; gap: 8px; }
+.title { height: 14px; }
+.sub { height: 10px; width: 60%; }

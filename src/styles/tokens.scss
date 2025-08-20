@@ -1,0 +1,53 @@
+:root {
+  /* legacy/base */
+  --pl-black: black;
+  --pl-white: white;
+  --pl-grey: #666;
+  --pl-card-grey: #101010;
+  --pl-second-grey: #3e3e3e;
+  --pl-font-family: Fkdisplay, Arial, sans-serif;
+
+  /* semantic surfaces */
+  --pl-color-bg: var(--pl-white);
+  --pl-color-surface: #f7f7f7;
+  --pl-color-surface-2: #ededed;
+  --pl-color-border: #d1d1d1;
+
+  /* text */
+  --pl-color-text: #1a1a1a;
+  --pl-color-text-muted: var(--pl-grey);
+
+  /* accent (toned-down grey) */
+  --pl-color-primary: #4a4a4a;
+  --pl-color-primary-contrast: var(--pl-white);
+
+  /* radii & shadow */
+  --pl-radius-sm: 6px;
+  --pl-radius-md: 12px;
+  --pl-radius-lg: 20px;
+  --pl-shadow-1: 0 2px 8px rgba(0,0,0,.08);
+  --pl-shadow-2: 0 6px 18px rgba(0,0,0,.16);
+
+  /* spacing */
+  --pl-space-1: 4px; --pl-space-2: 8px; --pl-space-3: 12px;
+  --pl-space-4: 16px; --pl-space-6: 24px; --pl-space-8: 32px;
+
+  /* typography & motion */
+  --pl-font-sans: var(--pl-font-family);
+  --pl-fs-sm: 14px; --pl-fs-md: 16px; --pl-fs-lg: 18px; --pl-fs-xl: 22px;
+  --pl-lh-normal: 1.4;
+  --pl-ease: cubic-bezier(.2,.8,.2,1);
+  --pl-dur-fast: 120ms;
+  --pl-dur-med: 200ms;
+}
+
+.theme-dark {
+  --pl-color-bg: #0e0e0e;
+  --pl-color-surface: var(--pl-card-grey);
+  --pl-color-surface-2: var(--pl-second-grey);
+  --pl-color-border: #2a2a2a;
+
+  --pl-color-text: var(--pl-white);
+  --pl-color-text-muted: #aaa;
+  --pl-color-primary: #999;
+}
