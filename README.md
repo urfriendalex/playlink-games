@@ -156,6 +156,7 @@ src/
   app/
     layout/RootLayout.tsx
     routes.tsx
+  main.tsx
   components/
     GameCard.tsx
     CardSkeleton.tsx
@@ -176,6 +177,7 @@ src/
     index.scss
     tokens.scss
     base.scss
+    tailwind.css
 ```
 
 ### Context + Hooks
