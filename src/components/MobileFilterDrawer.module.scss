@@ -1,0 +1,40 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--pl-color-surface);
+  border-top-left-radius: var(--pl-radius-lg);
+  border-top-right-radius: var(--pl-radius-lg);
+  border-top: 1px solid var(--pl-color-border);
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section { margin-bottom: 12px; }
+.list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid var(--pl-color-border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--pl-color-surface);
+}
+
+.chipActive { background: var(--pl-color-surface-2); }
+
+.actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }

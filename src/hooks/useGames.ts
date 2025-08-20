@@ -27,6 +27,7 @@ function delay(ms: number): Promise<void> {
 export function useGames() {
   const { state } = useGameState();
   const [data, setData] = useState<Game[] | null>(null);
+  const [meta, setMeta] = useState<{ providers: Provider[]; types: GameType[] } | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -41,7 +42,10 @@ export function useGames() {
         const res = await fetch("/api/mockGames.json");
         if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
         const json = (await res.json()) as GamesResponse;
-        if (!cancelled) setData(json.data);
+        if (!cancelled) {
+          setData(json.data);
+          setMeta(json.meta);
+        }
       } catch (e) {
         if (!cancelled) setError(e as Error);
       } finally {
@@ -67,7 +71,21 @@ export function useGames() {
     });
   }, [data, state.filters, state.favorites]);
 
-  return { data: filtered, loading, error, refetch: () => location.reload() };
+  const derivedMeta = useMemo(() => {
+    if (meta) return meta;
+    const providersSet = new Map<string, Provider>();
+    const typesSet = new Set<GameType>();
+    for (const g of data ?? []) {
+      providersSet.set(g.provider.id, g.provider);
+      typesSet.add(g.type);
+    }
+    return {
+      providers: Array.from(providersSet.values()),
+      types: Array.from(typesSet.values()),
+    };
+  }, [meta, data]);
+
+  return { data: filtered, loading, error, meta: derivedMeta, refetch: () => location.reload() };
 }
 
 export default useGames;

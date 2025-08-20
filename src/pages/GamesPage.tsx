@@ -2,6 +2,7 @@ import useGames from "@/hooks/useGames";
 import { useGameState } from "@/context/GameContext";
 import CardSkeleton from "@/components/CardSkeleton";
 import GameCard from "@/components/GameCard";
+import FilterChips from "@/components/FilterChips";
 import s from "./GamesPage.module.scss";
 
 export default function GamesPage() {
@@ -13,6 +14,10 @@ export default function GamesPage() {
       <p className={s.count} aria-live="polite">
         {loading ? "Loading…" : `${data.length} result${data.length === 1 ? "" : "s"}`}
       </p>
+
+      <div className="hidden md:block">
+        <FilterChips />
+      </div>
 
       {error && (
         <div className="card p-4">

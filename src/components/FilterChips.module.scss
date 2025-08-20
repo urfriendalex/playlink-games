@@ -1,0 +1,34 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.groupLabel {
+  font-size: 12px;
+  color: var(--pl-color-text-muted);
+  margin-right: 4px;
+}
+
+.chip {
+  border: 1px solid var(--pl-color-border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--pl-color-surface);
+  color: var(--pl-color-text);
+  transition: background var(--pl-dur-med) var(--pl-ease), border-color var(--pl-dur-med) var(--pl-ease);
+  
+  @media (min-width: 0px) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+.chipActive {
+  background: var(--pl-color-surface-2);
+}
+
+.clearBtn {
+  border-radius: 999px;
+}
