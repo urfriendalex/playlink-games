@@ -1,13 +1,28 @@
-:root, html, body, #root { height: 100%; }
+:root,
+html,
+body,
+#root {
+  height: 100%;
+}
 body {
   margin: 0;
   background: var(--pl-color-bg);
   color: var(--pl-color-text);
   font-family: var(--pl-font-sans);
+  transition:
+    background-color var(--pl-dur-med) var(--pl-ease),
+    color var(--pl-dur-med) var(--pl-ease);
 }
 
 /* accessibility helpers */
-.visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 /* globals built with variables + Tailwind compose */
 .card {
@@ -15,7 +30,9 @@ body {
   border: 1px solid var(--pl-color-border);
   border-radius: var(--pl-radius-md);
   box-shadow: var(--pl-shadow-1);
-  transition: transform var(--pl-dur-med) var(--pl-ease), box-shadow var(--pl-dur-med) var(--pl-ease);
+  transition:
+    transform var(--pl-dur-med) var(--pl-ease),
+    box-shadow var(--pl-dur-med) var(--pl-ease);
 }
 
 .card--hoverlift {
@@ -40,4 +57,18 @@ body {
 }
 
 /* tiny animation for skeletons */
-@keyframes pl-pulse { 0%,100% { opacity:.6 } 50% { opacity:1 } }
+@keyframes pl-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}

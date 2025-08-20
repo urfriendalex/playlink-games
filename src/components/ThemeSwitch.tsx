@@ -44,6 +44,7 @@ export default function ThemeSwitch() {
       type="button"
       role="switch"
       aria-checked={isDark}
+      aria-label="Dark mode"
       className="btn focus-ring text-sm"
       onClick={() => setIsDark((v) => !v)}
     >

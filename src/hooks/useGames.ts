@@ -2,7 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useGameState } from "@/context/GameContext";
 
 export type GameType = "slots" | "table" | "live" | "instant";
-export interface Provider { id: string; name: string; logo?: string }
+export interface Provider {
+  id: string;
+  name: string;
+  logo?: string;
+}
 export interface Game {
   id: string;
   title: string;
@@ -37,7 +41,7 @@ export function useGames() {
       setLoading(true);
       setError(null);
       try {
-        const jitter = 400 + Math.floor(Math.random() * 200);
+        const jitter = 400 + Math.floor(Math.random() * 2000);
         await delay(jitter);
         const res = await fetch("/api/mockGames.json");
         if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
@@ -66,7 +70,8 @@ export function useGames() {
       if (favoritesOnly && !state.favorites[g.id]) return false;
       if (providers.length > 0 && !providers.includes(g.provider.id)) return false;
       if (types.length > 0 && !types.includes(g.type)) return false;
-      if (s && !(g.title.toLowerCase().includes(s) || g.provider.name.toLowerCase().includes(s))) return false;
+      if (s && !(g.title.toLowerCase().includes(s) || g.provider.name.toLowerCase().includes(s)))
+        return false;
       return true;
     });
   }, [data, state.filters, state.favorites]);

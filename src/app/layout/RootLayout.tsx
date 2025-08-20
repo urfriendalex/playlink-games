@@ -3,6 +3,7 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import SearchBar from "@/components/SearchBar";
 import { useState, useRef } from "react";
 import MobileFilterDrawer from "@/components/MobileFilterDrawer";
+import Logo from "@/components/Logo";
 
 export default function RootLayout() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -12,8 +13,8 @@ export default function RootLayout() {
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-10 border-b border-[color:var(--pl-color-border)] bg-[color:var(--pl-color-surface)]/80 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
-          <Link to="/" className="text-lg font-semibold focus-ring">
-            Playlink Games
+          <Link to="/" className="focus-ring" aria-label="Playlink home">
+            <Logo className="h-6 w-auto text-[color:var(--pl-color-text)]" />
           </Link>
           <div className="flex-1" />
           <button

@@ -17,8 +17,10 @@
   padding: 8px 12px;
   background: var(--pl-color-surface);
   color: var(--pl-color-text);
-  transition: background var(--pl-dur-med) var(--pl-ease), border-color var(--pl-dur-med) var(--pl-ease);
-  
+  transition:
+    background var(--pl-dur-med) var(--pl-ease),
+    border-color var(--pl-dur-med) var(--pl-ease);
+
   @media (min-width: 0px) {
     min-height: 44px;
     min-width: 44px;
@@ -27,6 +29,11 @@
 
 .chipActive {
   background: var(--pl-color-surface-2);
+  border-color: var(--pl-color-border);
+}
+
+.chip:disabled {
+  opacity: 0.6;
 }
 
 .clearBtn {

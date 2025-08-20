@@ -1,23 +1,95 @@
 {
   "data": [
-    { "id": "g1", "title": "Star Slots", "thumbnail": "/thumbs/star.jpg", "provider": { "id": "p1", "name": "Orion" }, "type": "slots", "slug": "star-slots", "isNew": true },
-    { "id": "g2", "title": "Pirate Slots", "thumbnail": "/thumbs/pirate.jpg", "provider": { "id": "p2", "name": "SevenSea" }, "type": "slots", "slug": "pirate-slots" },
-    { "id": "g3", "title": "Blackjack Pro", "thumbnail": "/thumbs/blackjack.jpg", "provider": { "id": "p3", "name": "Eclipse" }, "type": "table", "slug": "blackjack-pro" },
-    { "id": "g4", "title": "Roulette Live", "thumbnail": "/thumbs/roulette.jpg", "provider": { "id": "p3", "name": "Eclipse" }, "type": "live", "slug": "roulette-live", "isNew": true },
-    { "id": "g5", "title": "Speed Poker", "thumbnail": "/thumbs/poker.jpg", "provider": { "id": "p1", "name": "Orion" }, "type": "table", "slug": "speed-poker" },
-    { "id": "g6", "title": "Gem Crush", "thumbnail": "/thumbs/gem.jpg", "provider": { "id": "p2", "name": "SevenSea" }, "type": "instant", "slug": "gem-crush" },
-    { "id": "g7", "title": "Mega Live Show", "thumbnail": "/thumbs/live-show.jpg", "provider": { "id": "p4", "name": "Nova" }, "type": "live", "slug": "mega-live-show" },
-    { "id": "g8", "title": "Wild West Slots", "thumbnail": "/thumbs/west.jpg", "provider": { "id": "p4", "name": "Nova" }, "type": "slots", "slug": "wild-west-slots" },
-    { "id": "g9", "title": "Baccarat Studio", "thumbnail": "/thumbs/baccarat.jpg", "provider": { "id": "p3", "name": "Eclipse" }, "type": "table", "slug": "baccarat-studio" },
-    { "id": "g10", "title": "Instant Keno", "thumbnail": "/thumbs/keno.jpg", "provider": { "id": "p1", "name": "Orion" }, "type": "instant", "slug": "instant-keno" }
+    {
+      "id": "g1",
+      "title": "Star Slots",
+      "thumbnail": "/game-banners/test_small_banner_1.avif",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "slots",
+      "slug": "star-slots",
+      "isNew": true
+    },
+    {
+      "id": "g2",
+      "title": "Pirate Slots",
+      "thumbnail": "/game-banners/test_small_banner_2.avif",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "slots",
+      "slug": "pirate-slots"
+    },
+    {
+      "id": "g3",
+      "title": "Blackjack Pro",
+      "thumbnail": "/game-banners/sample_banner.png",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "blackjack-pro"
+    },
+    {
+      "id": "g4",
+      "title": "Roulette Live",
+      "thumbnail": "/thumbs/roulette.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "live",
+      "slug": "roulette-live",
+      "isNew": true
+    },
+    {
+      "id": "g5",
+      "title": "Speed Poker",
+      "thumbnail": "/thumbs/poker.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "table",
+      "slug": "speed-poker"
+    },
+    {
+      "id": "g6",
+      "title": "Gem Crush",
+      "thumbnail": "/game-banners/tilemap_packed.png",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "instant",
+      "slug": "gem-crush"
+    },
+    {
+      "id": "g7",
+      "title": "Mega Live Show",
+      "thumbnail": "/game-banners/tilemap_packed-2.png",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "live",
+      "slug": "mega-live-show"
+    },
+    {
+      "id": "g8",
+      "title": "Wild West Slots",
+      "thumbnail": "/thumbs/west.jpg",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "slots",
+      "slug": "wild-west-slots"
+    },
+    {
+      "id": "g9",
+      "title": "Baccarat Studio",
+      "thumbnail": "/thumbs/baccarat.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "baccarat-studio"
+    },
+    {
+      "id": "g10",
+      "title": "Instant Keno",
+      "thumbnail": "/thumbs/keno.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "instant",
+      "slug": "instant-keno"
+    }
   ],
   "pagination": { "page": 1, "pageSize": 20, "total": 10, "hasMore": false },
   "meta": {
     "providers": [
-      { "id": "p1", "name": "Orion" },
-      { "id": "p2", "name": "SevenSea" },
-      { "id": "p3", "name": "Eclipse" },
-      { "id": "p4", "name": "Nova" }
+      { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" }
     ],
     "types": ["slots", "table", "live", "instant"]
   }

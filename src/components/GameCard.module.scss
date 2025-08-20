@@ -1,24 +1,122 @@
-.card { overflow: hidden; }
+.card {
+  overflow: hidden;
+}
 
-.thumbWrap { position: relative; }
+.thumbWrap {
+  position: relative;
+}
 
 .thumb {
   width: 100%;
   display: block;
   aspect-ratio: 16/9;
-  object-fit: cover;
+  object-fit: contain;
   background: var(--pl-color-surface-2);
+  filter: grayscale(100%) contrast(1.05);
+  transition: filter var(--pl-dur-med) var(--pl-ease);
+}
+
+/* reveal color on hover/focus within */
+.card:hover .thumb,
+.card:focus-within .thumb {
+  filter: none;
+}
+
+/* placeholder styling */
+.placeholder {
+  background: var(--pl-color-surface-2);
+  object-fit: contain;
 }
 
 .badge {
-  position: absolute; top: 8px; left: 8px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
   background: var(--pl-color-primary);
   color: var(--pl-color-primary-contrast);
-  font-size: 12px; padding: 4px 8px; border-radius: 999px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
 }
 
-.favBtn { position: absolute; top: 8px; right: 8px; border-radius: 999px; }
+.favBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 999px;
+}
 
-.meta { padding: 12px; }
-.title { font-weight: 600; margin-bottom: 4px; }
-.sub { font-size: 12px; color: var(--pl-color-text-muted); }
+.meta {
+  padding: 12px;
+}
+.title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.sub {
+  font-size: 12px;
+  color: var(--pl-color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.providerLogo {
+  height: 16px;
+  width: auto;
+  display: inline-block;
+  filter: var(--pl-provider-logo-filter);
+  opacity: var(--pl-provider-logo-opacity);
+}
+
+/* Hover lift micro-interaction */
+.card {
+  transition:
+    transform var(--pl-dur-med) var(--pl-ease),
+    box-shadow var(--pl-dur-med) var(--pl-ease);
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--pl-shadow-2);
+}
+
+/* Favorite pop animation */
+@keyframes gc-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes gc-tick {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.favBtn[data-pop="true"] {
+  animation: gc-pop var(--pl-dur-med) var(--pl-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: box-shadow var(--pl-dur-med) var(--pl-ease);
+  }
+  .card:hover {
+    transform: none;
+    box-shadow: var(--pl-shadow-2);
+  }
+  .thumb {
+    transition: none;
+  }
+  .favBtn[data-pop="true"] {
+    animation: gc-tick var(--pl-dur-fast) linear;
+  }
+}

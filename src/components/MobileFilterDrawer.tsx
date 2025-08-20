@@ -10,9 +10,13 @@ export interface MobileFilterDrawerProps {
   labelledById: string;
 }
 
-export default function MobileFilterDrawer({ open, onClose, labelledById }: MobileFilterDrawerProps) {
+export default function MobileFilterDrawer({
+  open,
+  onClose,
+  labelledById,
+}: MobileFilterDrawerProps) {
   const { state, dispatch } = useGameState();
-  const { meta } = useGames();
+  const { meta, loading } = useGames();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const firstFocusRef = useRef<HTMLButtonElement | null>(null);
 
@@ -31,7 +35,7 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
       }
       if (e.key === "Tab" && rootRef.current) {
         const focusable = rootRef.current.querySelectorAll<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
         );
         const list = Array.from(focusable).filter((el) => !el.hasAttribute("disabled"));
         if (list.length === 0) return;
@@ -57,6 +61,7 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
   if (!open) return null;
 
   function onKeyToggle(e: React.KeyboardEvent, onToggle: () => void) {
+    if (loading) return;
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       onToggle();
@@ -66,14 +71,26 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
   return (
     <div className="md:hidden">
       <div className={s.overlay} aria-hidden onClick={onClose} />
-      <div className={s.drawer} ref={rootRef} role="dialog" aria-modal="true" aria-labelledby={labelledById}>
+      <div
+        className={s.drawer}
+        ref={rootRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={labelledById}
+      >
         <div className={s.header}>
-          <h2 id={labelledById} className="text-base font-semibold">Filters</h2>
-          <button className="btn focus-ring" onClick={onClose} ref={firstFocusRef}>Close</button>
+          <h2 id={labelledById} className="text-base font-semibold">
+            Filters
+          </h2>
+          <button className="btn focus-ring" onClick={onClose} ref={firstFocusRef}>
+            Close
+          </button>
         </div>
 
         <section className={s.section} aria-labelledby="providers-m">
-          <h3 id="providers-m" className="text-sm text-[color:var(--pl-color-text-muted)] mb-1">Providers</h3>
+          <h3 id="providers-m" className="text-sm text-[color:var(--pl-color-text-muted)] mb-1">
+            Providers
+          </h3>
           <div className={s.list}>
             {providerChips.map((p) => {
               const active = state.filters.providers.includes(p.id);
@@ -81,10 +98,18 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
                 <button
                   key={p.id}
                   type="button"
-                  className={cx("focus-ring", s.chip, { [s.chipActive]: active })}
+                  className={cx(
+                    "focus-ring",
+                    s.chip,
+                    { [s.chipActive]: active },
+                    loading && "opacity-60 cursor-not-allowed",
+                  )}
                   aria-pressed={active}
-                  onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id }))}
-                  onClick={() => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id })}
+                  disabled={loading}
+                  onKeyDown={(e) =>
+                    onKeyToggle(e, () => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id }))
+                  }
+                  onClick={() => !loading && dispatch({ type: "TOGGLE_PROVIDER", payload: p.id })}
                 >
                   {p.name}
                 </button>
@@ -94,7 +119,9 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
         </section>
 
         <section className={s.section} aria-labelledby="types-m">
-          <h3 id="types-m" className="text-sm text-[color:var(--pl-color-text-muted)] mb-1">Types</h3>
+          <h3 id="types-m" className="text-sm text-[color:var(--pl-color-text-muted)] mb-1">
+            Types
+          </h3>
           <div className={s.list}>
             {typeChips.map((t) => {
               const active = state.filters.types.includes(t as GameType);
@@ -102,10 +129,20 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
                 <button
                   key={t}
                   type="button"
-                  className={cx("focus-ring", s.chip, { [s.chipActive]: active })}
+                  className={cx(
+                    "focus-ring",
+                    s.chip,
+                    { [s.chipActive]: active },
+                    loading && "opacity-60 cursor-not-allowed",
+                  )}
                   aria-pressed={active}
-                  onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType }))}
-                  onClick={() => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType })}
+                  disabled={loading}
+                  onKeyDown={(e) =>
+                    onKeyToggle(e, () => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType }))
+                  }
+                  onClick={() =>
+                    !loading && dispatch({ type: "TOGGLE_TYPE", payload: t as GameType })
+                  }
                 >
                   {t}
                 </button>
@@ -117,18 +154,32 @@ export default function MobileFilterDrawer({ open, onClose, labelledById }: Mobi
         <div className={s.section}>
           <button
             type="button"
-            className={cx("focus-ring", s.chip, { [s.chipActive]: state.filters.favoritesOnly })}
+            className={cx(
+              "focus-ring",
+              s.chip,
+              { [s.chipActive]: state.filters.favoritesOnly },
+              loading && "opacity-60 cursor-not-allowed",
+            )}
             aria-pressed={state.filters.favoritesOnly}
+            disabled={loading}
             onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_FAVORITES_ONLY" }))}
-            onClick={() => dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
+            onClick={() => !loading && dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
           >
             Favorites only
           </button>
         </div>
 
         <div className={s.actions}>
-          <button className="btn focus-ring" onClick={() => dispatch({ type: "CLEAR_FILTERS" })}>Clear all</button>
-          <button className="btn focus-ring" onClick={onClose}>Apply</button>
+          <button
+            className="btn focus-ring"
+            onClick={() => dispatch({ type: "CLEAR_FILTERS" })}
+            disabled={loading}
+          >
+            Clear all
+          </button>
+          <button className="btn focus-ring" onClick={onClose} disabled={loading}>
+            Apply
+          </button>
         </div>
       </div>
     </div>

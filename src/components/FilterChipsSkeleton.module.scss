@@ -1,0 +1,43 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.labelSkeleton {
+  height: 14px;
+  width: 80px;
+  border-radius: var(--pl-radius-sm);
+  background: var(--pl-color-surface-2);
+  animation: pl-pulse 1.6s ease infinite;
+}
+
+.chipSkeleton {
+  height: 32px;
+  min-width: 60px;
+  border-radius: 9999px;
+  background: var(--pl-color-surface-2);
+  animation: pl-pulse 1.6s ease infinite;
+}
+
+/* width variants */
+.w60 {
+  width: 60px;
+}
+.w80 {
+  width: 80px;
+}
+.w100 {
+  width: 100px;
+}
+.w120 {
+  width: 120px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .labelSkeleton,
+  .chipSkeleton {
+    animation-duration: 1400ms;
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "data": [
+    {
+      "id": "g101",
+      "title": "Star Slots X",
+      "thumbnail": "/game-banners/test_small_banner_1.avif",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "slots",
+      "slug": "star-slots-x",
+      "isNew": true
+    },
+    {
+      "id": "g102",
+      "title": "Pirate Slots Plus",
+      "thumbnail": "/game-banners/test_small_banner_2.avif",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "slots",
+      "slug": "pirate-slots-plus"
+    },
+    {
+      "id": "g103",
+      "title": "Blackjack Pro Max",
+      "thumbnail": "/game-banners/sample_banner.png",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "blackjack-pro-max"
+    },
+    {
+      "id": "g104",
+      "title": "Roulette Live HD",
+      "thumbnail": "/thumbs/roulette.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "live",
+      "slug": "roulette-live-hd",
+      "isNew": true
+    },
+    {
+      "id": "g105",
+      "title": "Speed Poker Turbo",
+      "thumbnail": "/thumbs/poker.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "table",
+      "slug": "speed-poker-turbo"
+    },
+    {
+      "id": "g106",
+      "title": "Gem Crush Ultra",
+      "thumbnail": "/game-banners/tilemap_packed.png",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "instant",
+      "slug": "gem-crush-ultra"
+    },
+    {
+      "id": "g107",
+      "title": "Mega Live Show 2",
+      "thumbnail": "/game-banners/tilemap_packed-2.png",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "live",
+      "slug": "mega-live-show-2"
+    },
+    {
+      "id": "g108",
+      "title": "Wild West Slots 2",
+      "thumbnail": "/thumbs/west.jpg",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "slots",
+      "slug": "wild-west-slots-2"
+    },
+    {
+      "id": "g109",
+      "title": "Baccarat Studio+",
+      "thumbnail": "/thumbs/baccarat.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "baccarat-studio-plus"
+    },
+    {
+      "id": "g110",
+      "title": "Instant Keno DX",
+      "thumbnail": "/thumbs/keno.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "instant",
+      "slug": "instant-keno-dx"
+    },
+
+    {
+      "id": "g111",
+      "title": "Star Nova",
+      "thumbnail": "/game-banners/test_small_banner_1.avif",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "slots",
+      "slug": "star-nova"
+    },
+    {
+      "id": "g112",
+      "title": "Sea of Fortune",
+      "thumbnail": "/game-banners/test_small_banner_2.avif",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "slots",
+      "slug": "sea-of-fortune"
+    },
+    {
+      "id": "g113",
+      "title": "Eclipse Blackjack",
+      "thumbnail": "/thumbs/blackjack.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "eclipse-blackjack"
+    },
+    {
+      "id": "g114",
+      "title": "Nova Roulette",
+      "thumbnail": "/thumbs/roulette.jpg",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "live",
+      "slug": "nova-roulette"
+    },
+    {
+      "id": "g115",
+      "title": "Orion Poker",
+      "thumbnail": "/thumbs/poker.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "table",
+      "slug": "orion-poker"
+    },
+    {
+      "id": "g116",
+      "title": "Seven Gems",
+      "thumbnail": "/game-banners/sample_banner.png",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "instant",
+      "slug": "seven-gems"
+    },
+    {
+      "id": "g117",
+      "title": "Live Stars",
+      "thumbnail": "/game-banners/tilemap_packed.png",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "live",
+      "slug": "live-stars"
+    },
+    {
+      "id": "g118",
+      "title": "Wild Nova",
+      "thumbnail": "/game-banners/tilemap_packed-2.png",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "slots",
+      "slug": "wild-nova"
+    },
+    {
+      "id": "g119",
+      "title": "Baccarat Orion",
+      "thumbnail": "/thumbs/baccarat.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "table",
+      "slug": "baccarat-orion"
+    },
+    {
+      "id": "g120",
+      "title": "Keno Eclipse",
+      "thumbnail": "/game-banners/test_small_banner_1.avif",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "instant",
+      "slug": "keno-eclipse"
+    },
+
+    {
+      "id": "g121",
+      "title": "Starlight Reels",
+      "thumbnail": "/game-banners/test_small_banner_2.avif",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "slots",
+      "slug": "starlight-reels"
+    },
+    {
+      "id": "g122",
+      "title": "Pirate's Fortune",
+      "thumbnail": "/game-banners/test_small_banner_2.avif",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "slots",
+      "slug": "pirates-fortune"
+    },
+    {
+      "id": "g123",
+      "title": "Blackjack Studio",
+      "thumbnail": "/thumbs/blackjack.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "blackjack-studio"
+    },
+    {
+      "id": "g124",
+      "title": "Roulette Prime",
+      "thumbnail": "/thumbs/roulette.jpg",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "live",
+      "slug": "roulette-prime"
+    },
+    {
+      "id": "g125",
+      "title": "Poker Legends",
+      "thumbnail": "/thumbs/poker.jpg",
+      "provider": { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      "type": "table",
+      "slug": "poker-legends"
+    },
+    {
+      "id": "g126",
+      "title": "Gem Factory",
+      "thumbnail": "/game-banners/sample_banner.png",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "instant",
+      "slug": "gem-factory"
+    },
+    {
+      "id": "g127",
+      "title": "Live Grand",
+      "thumbnail": "/game-banners/tilemap_packed-2.png",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "live",
+      "slug": "live-grand"
+    },
+    {
+      "id": "g128",
+      "title": "Wild Frontier",
+      "thumbnail": "/game-banners/test_small_banner_1.avif",
+      "provider": { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" },
+      "type": "slots",
+      "slug": "wild-frontier"
+    },
+    {
+      "id": "g129",
+      "title": "Baccarat Royale",
+      "thumbnail": "/thumbs/baccarat.jpg",
+      "provider": { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      "type": "table",
+      "slug": "baccarat-royale"
+    },
+    {
+      "id": "g130",
+      "title": "Keno Rush",
+      "thumbnail": "/thumbs/keno.jpg",
+      "provider": { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      "type": "instant",
+      "slug": "keno-rush"
+    }
+  ],
+  "pagination": { "page": 1, "pageSize": 50, "total": 30, "hasMore": false },
+  "meta": {
+    "providers": [
+      { "id": "p1", "name": "Orion", "logo": "/providers/orion.svg" },
+      { "id": "p2", "name": "SevenSea", "logo": "/providers/sevensea.svg" },
+      { "id": "p3", "name": "Eclipse", "logo": "/providers/eclipse.svg" },
+      { "id": "p4", "name": "Nova", "logo": "/providers/nova.svg" }
+    ],
+    "types": ["slots", "table", "live", "instant"]
+  }
+}

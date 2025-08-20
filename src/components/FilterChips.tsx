@@ -16,13 +16,14 @@ function useHasActiveFilters() {
 
 export default function FilterChips() {
   const { state, dispatch } = useGameState();
-  const { meta } = useGames();
+  const { meta, loading } = useGames();
 
   const providerChips = useMemo(() => meta.providers, [meta.providers]);
   const typeChips = useMemo(() => meta.types, [meta.types]);
   const hasActive = useHasActiveFilters();
 
   function onKeyToggle(e: React.KeyboardEvent, onToggle: () => void) {
+    if (loading) return;
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       onToggle();
@@ -31,50 +32,78 @@ export default function FilterChips() {
 
   return (
     <div className={s.toolbar} aria-label="Filters toolbar">
-      <span className={s.groupLabel} id="providers-label">Providers:</span>
+      <span className={s.groupLabel} id="providers-label">
+        Providers:
+      </span>
       {providerChips.map((p) => {
         const active = state.filters.providers.includes(p.id);
         return (
           <button
             key={p.id}
             type="button"
-            className={cx("focus-ring", s.chip, { [s.chipActive]: active })}
+            className={cx(
+              "focus-ring",
+              s.chip,
+              { [s.chipActive]: active },
+              loading && "opacity-60 cursor-not-allowed",
+            )}
             aria-pressed={active}
             aria-labelledby={`providers-label`}
-            onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id }))}
-            onClick={() => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id })}
+            disabled={loading}
+            onKeyDown={(e) =>
+              onKeyToggle(e, () => dispatch({ type: "TOGGLE_PROVIDER", payload: p.id }))
+            }
+            onClick={() => !loading && dispatch({ type: "TOGGLE_PROVIDER", payload: p.id })}
           >
             {p.name}
           </button>
         );
       })}
 
-      <span className={s.groupLabel} id="types-label">Types:</span>
+      <span className={s.groupLabel} id="types-label">
+        Types:
+      </span>
       {typeChips.map((t) => {
         const active = state.filters.types.includes(t as GameType);
         return (
           <button
             key={t}
             type="button"
-            className={cx("focus-ring", s.chip, { [s.chipActive]: active })}
+            className={cx(
+              "focus-ring",
+              s.chip,
+              { [s.chipActive]: active },
+              loading && "opacity-60 cursor-not-allowed",
+            )}
             aria-pressed={active}
             aria-labelledby={`types-label`}
-            onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType }))}
-            onClick={() => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType })}
+            disabled={loading}
+            onKeyDown={(e) =>
+              onKeyToggle(e, () => dispatch({ type: "TOGGLE_TYPE", payload: t as GameType }))
+            }
+            onClick={() => !loading && dispatch({ type: "TOGGLE_TYPE", payload: t as GameType })}
           >
             {t}
           </button>
         );
       })}
 
-      <span className="sr-only" id="favorites-label">Favorites only</span>
+      <span className="sr-only" id="favorites-label">
+        Favorites only
+      </span>
       <button
         type="button"
-        className={cx("focus-ring", s.chip, { [s.chipActive]: state.filters.favoritesOnly })}
+        className={cx(
+          "focus-ring",
+          s.chip,
+          { [s.chipActive]: state.filters.favoritesOnly },
+          loading && "opacity-60 cursor-not-allowed",
+        )}
         aria-pressed={state.filters.favoritesOnly}
         aria-labelledby="favorites-label"
+        disabled={loading}
         onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_FAVORITES_ONLY" }))}
-        onClick={() => dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
+        onClick={() => !loading && dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
       >
         Favorites
       </button>
@@ -82,8 +111,9 @@ export default function FilterChips() {
       {hasActive && (
         <button
           type="button"
-          className={cx("btn focus-ring", s.clearBtn)}
-          onClick={() => dispatch({ type: "CLEAR_FILTERS" })}
+          className={cx("btn focus-ring", s.clearBtn, loading && "opacity-60 cursor-not-allowed")}
+          disabled={loading}
+          onClick={() => !loading && dispatch({ type: "CLEAR_FILTERS" })}
         >
           Clear all
         </button>

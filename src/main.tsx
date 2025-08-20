@@ -14,5 +14,5 @@ ReactDOM.createRoot(rootEl).render(
     <GameProvider>
       <RouterProvider router={router} />
     </GameProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

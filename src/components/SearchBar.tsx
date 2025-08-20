@@ -22,7 +22,9 @@ export default function SearchBar() {
 
   return (
     <div className="relative">
-      <label id={labelId} className="visually-hidden">Search games</label>
+      <label id={labelId} className="visually-hidden">
+        Search games
+      </label>
       <input
         aria-labelledby={labelId}
         type="search"
