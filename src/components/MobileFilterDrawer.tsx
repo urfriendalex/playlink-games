@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { useGameState } from "@/context/GameContext";
 import useGames, { type GameType } from "@/hooks/useGames";
 import s from "./MobileFilterDrawer.module.scss";
+import chips from "./FilterChips.module.scss";
 import cx from "clsx";
 
 export interface MobileFilterDrawerProps {
@@ -16,7 +17,7 @@ export default function MobileFilterDrawer({
   labelledById,
 }: MobileFilterDrawerProps) {
   const { state, dispatch } = useGameState();
-  const { meta, loading } = useGames();
+  const { meta, loading, data, error } = useGames();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const firstFocusRef = useRef<HTMLButtonElement | null>(null);
 
@@ -100,8 +101,8 @@ export default function MobileFilterDrawer({
                   type="button"
                   className={cx(
                     "focus-ring",
-                    s.chip,
-                    { [s.chipActive]: active },
+                    chips.chip,
+                    { [chips.chipActive]: active },
                     loading && "opacity-60 cursor-not-allowed",
                   )}
                   aria-pressed={active}
@@ -131,8 +132,8 @@ export default function MobileFilterDrawer({
                   type="button"
                   className={cx(
                     "focus-ring",
-                    s.chip,
-                    { [s.chipActive]: active },
+                    chips.chip,
+                    { [chips.chipActive]: active },
                     loading && "opacity-60 cursor-not-allowed",
                   )}
                   aria-pressed={active}
@@ -156,16 +157,33 @@ export default function MobileFilterDrawer({
             type="button"
             className={cx(
               "focus-ring",
-              s.chip,
-              { [s.chipActive]: state.filters.favoritesOnly },
-              loading && "opacity-60 cursor-not-allowed",
+              chips.chip,
+              chips.favChip,
+              { [chips.chipActive]: state.filters.favoritesOnly },
+              // Only show disabled styling if truly disabled (no results while loading)
+              (!!error || (loading && (data?.length ?? 0) === 0)) &&
+                "opacity-60 cursor-not-allowed",
             )}
             aria-pressed={state.filters.favoritesOnly}
-            disabled={loading}
-            onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_FAVORITES_ONLY" }))}
-            onClick={() => !loading && dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
+            // Keep enabled when there are results, even during loading; disable on error
+            disabled={!!error || (loading && (data?.length ?? 0) === 0)}
+            onKeyDown={(e) => {
+              const favDisabled = !!error || (loading && (data?.length ?? 0) === 0);
+              if (favDisabled) return;
+              if (e.key === " " || e.key === "Enter") {
+                e.preventDefault();
+                dispatch({ type: "TOGGLE_FAVORITES_ONLY" });
+              }
+            }}
+            onClick={() => {
+              const favDisabled = !!error || (loading && (data?.length ?? 0) === 0);
+              if (!favDisabled) dispatch({ type: "TOGGLE_FAVORITES_ONLY" });
+            }}
           >
-            Favorites only
+            <span aria-hidden="true" className={chips.icon}>
+              ★
+            </span>
+            <span>Favorites only</span>
           </button>
         </div>
 

@@ -10,8 +10,16 @@
   /* semantic surfaces */
   --pl-color-bg: var(--pl-white);
   --pl-color-surface: #f7f7f7;
-  --pl-color-surface-2: #ededed;
+  --pl-color-surface-2: #e6e6e6;
   --pl-color-border: #d1d1d1;
+
+  /* overlay surfaces */
+  --pl-color-surface-overlay-1: #f7f7f769;
+  --pl-color-surface-overlay-2: #f7f7f733;
+  --pl-color-surface-overlay-3: #f7f7f71a;
+  --pl-color-surface-backdrop-blur-1: blur(4px);
+  --pl-color-surface-backdrop-blur-2: blur(12px);
+  --pl-color-surface-backdrop-blur-3: blur(24px);
 
   /* text */
   --pl-color-text: #1a1a1a;
@@ -22,9 +30,9 @@
   --pl-color-primary-contrast: var(--pl-white);
 
   /* radii & shadow */
-  --pl-radius-sm: 6px;
-  --pl-radius-md: 12px;
-  --pl-radius-lg: 20px;
+  --pl-radius-sm: 4px;
+  --pl-radius-md: 8px;
+  --pl-radius-lg: 12px;
   --pl-shadow-1: 0 2px 8px rgba(0, 0, 0, 0.08);
   --pl-shadow-2: 0 6px 18px rgba(0, 0, 0, 0.16);
 
@@ -82,6 +90,11 @@
   --pl-color-text: var(--pl-white);
   --pl-color-text-muted: #aaa;
   --pl-color-primary: #999;
+  --pl-color-primary-contrast: var(--pl-black);
+
+  --pl-color-surface-overlay-1: #0e0e0e69;
+  --pl-color-surface-overlay-2: #0e0e0e33;
+  --pl-color-surface-overlay-3: #0e0e0e1a;
 
   /* provider logo appearance (dark) */
   --pl-provider-logo-filter: invert(1);

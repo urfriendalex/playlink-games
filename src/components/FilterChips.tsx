@@ -16,11 +16,13 @@ function useHasActiveFilters() {
 
 export default function FilterChips() {
   const { state, dispatch } = useGameState();
-  const { meta, loading } = useGames();
+  const { meta, loading, data, error } = useGames();
 
   const providerChips = useMemo(() => meta.providers, [meta.providers]);
   const typeChips = useMemo(() => meta.types, [meta.types]);
   const hasActive = useHasActiveFilters();
+  const hasAnyResults = (data?.length ?? 0) > 0;
+  const favDisabled = !!error || (loading && !hasAnyResults);
 
   function onKeyToggle(e: React.KeyboardEvent, onToggle: () => void) {
     if (loading) return;
@@ -96,22 +98,36 @@ export default function FilterChips() {
         className={cx(
           "focus-ring",
           s.chip,
+          s.favChip,
           { [s.chipActive]: state.filters.favoritesOnly },
-          loading && "opacity-60 cursor-not-allowed",
+          // Only show disabled styling if truly disabled (no results while loading)
+          favDisabled && "opacity-60 cursor-not-allowed",
         )}
         aria-pressed={state.filters.favoritesOnly}
         aria-labelledby="favorites-label"
-        disabled={loading}
-        onKeyDown={(e) => onKeyToggle(e, () => dispatch({ type: "TOGGLE_FAVORITES_ONLY" }))}
-        onClick={() => !loading && dispatch({ type: "TOGGLE_FAVORITES_ONLY" })}
+        // Keep enabled when there are results, even during loading; disable on error
+        disabled={favDisabled}
+        onKeyDown={(e) => {
+          if (favDisabled) return;
+          if (e.key === " " || e.key === "Enter") {
+            e.preventDefault();
+            dispatch({ type: "TOGGLE_FAVORITES_ONLY" });
+          }
+        }}
+        onClick={() => {
+          if (!favDisabled) dispatch({ type: "TOGGLE_FAVORITES_ONLY" });
+        }}
       >
-        Favorites
+        <span aria-hidden="true" className={s.icon}>
+          ★
+        </span>
+        <span>Favorites</span>
       </button>
 
       {hasActive && (
         <button
           type="button"
-          className={cx("btn focus-ring", s.clearBtn, loading && "opacity-60 cursor-not-allowed")}
+          className={cx("focus-ring", s.clearBtn, loading && "opacity-60 cursor-not-allowed")}
           disabled={loading}
           onClick={() => !loading && dispatch({ type: "CLEAR_FILTERS" })}
         >

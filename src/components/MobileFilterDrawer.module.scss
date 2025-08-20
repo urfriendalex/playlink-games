@@ -2,6 +2,8 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: var(--pl-color-surface-backdrop-blur-1);
+  animation: mfd-fade-in var(--pl-dur-med) var(--pl-ease);
 }
 
 .drawer {
@@ -14,6 +16,35 @@
   border-top-right-radius: var(--pl-radius-lg);
   border-top: 1px solid var(--pl-color-border);
   padding: 16px;
+  animation: mfd-slide-up var(--pl-dur-med) var(--pl-ease);
+}
+
+@keyframes mfd-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mfd-slide-up {
+  from {
+    transform: translateY(12px);
+    opacity: 0.96;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    animation: none;
+  }
+  .drawer {
+    animation: none;
+  }
 }
 
 .header {
@@ -29,15 +60,15 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--pl-space-2);
 }
 
 .chip {
-  min-height: 44px;
-  min-width: 44px;
+  min-height: 32px;
+  min-width: 32px;
   border: 1px solid var(--pl-color-border);
   border-radius: 999px;
-  padding: 8px 12px;
+  padding: var(--pl-space-1) var(--pl-space-3);
   background: var(--pl-color-surface);
 }
 
@@ -52,6 +83,6 @@
 .actions {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--pl-space-2);
   margin-top: 12px;
 }

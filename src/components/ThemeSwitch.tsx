@@ -44,11 +44,15 @@ export default function ThemeSwitch() {
       type="button"
       role="switch"
       aria-checked={isDark}
-      aria-label="Dark mode"
-      className="btn focus-ring text-sm"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="focus-ring flex items-center gap-2 cursor-pointer"
+      style={{
+        fontSize: "0.75rem",
+        padding: "var(--pl-space-2) var(--pl-space-4)",
+      }}
       onClick={() => setIsDark((v) => !v)}
     >
-      {isDark ? "Dark" : "Light"}
+      <span>{isDark ? "Dark" : "Light"}</span>
     </button>
   );
 }

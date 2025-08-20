@@ -9,6 +9,7 @@ import FilterChipsSkeleton from "@/components/FilterChipsSkeleton";
 import GridSizeSwitch from "@/components/GridSizeSwitch";
 import { useEffect, useState } from "react";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import SearchBar from "@/components/SearchBar";
 
 const GRID_KEY = "pl-grid-cols";
 
@@ -44,27 +45,47 @@ export default function GamesPage() {
 
   const gridClass = `${s.grid} ${cols === 1 ? s.cols1 : cols === 2 ? s.cols2 : cols === 3 ? s.cols3 : s.cols4}`;
 
+  const countText = loading
+    ? "Loading…"
+    : `Showing ${data.length} ${data.length === 1 ? "game" : "games"}`;
+
   return (
     <div className="space-y-4">
-      <p className={s.count} aria-live="polite">
-        {loading ? "Loading…" : `${data.length} result${data.length === 1 ? "" : "s"}`}
-      </p>
+      {/* Search + count row */}
+      <div className="flex items-center gap-3">
+        <div className="flex-1 min-w-0">
+          <SearchBar />
+        </div>
+        <p className={s.count} aria-live="polite">
+          {countText}
+        </p>
+      </div>
 
       {/* Desktop controls */}
       <div className="hidden md:flex items-center justify-between">
         {loading ? <FilterChipsSkeleton /> : <FilterChips />}
-        <GridSizeSwitch value={cols} onChange={setCols} disabled={loading} options={[2, 3, 4]} />
+        <GridSizeSwitch
+          value={cols}
+          onChange={setCols}
+          disabled={loading || !!error}
+          options={[2, 3, 4]}
+        />
       </div>
 
       {/* Mobile controls */}
       <div className="flex md:hidden items-center justify-end">
-        <GridSizeSwitch value={cols} onChange={setCols} disabled={loading} options={[1, 2]} />
+        <GridSizeSwitch
+          value={cols}
+          onChange={setCols}
+          disabled={loading || !!error}
+          options={[1, 2]}
+        />
       </div>
 
       {error && (
-        <div className="card p-4">
-          <p className="mb-2">Something went wrong.</p>
-          <button className="btn focus-ring" onClick={refetch}>
+        <div className="card p-4 flex flex-row items-center justify-between gap-4">
+          <p className="text-sm">Something went wrong.</p>
+          <button className="btn focus-ring" onClick={refetch} aria-label="Retry fetching games">
             Retry
           </button>
         </div>

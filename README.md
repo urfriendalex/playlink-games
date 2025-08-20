@@ -11,16 +11,40 @@
 - Implemented
   - React 19 + Vite 6 + TypeScript 5 + React Router v7
   - Tailwind v4 (Vite plugin) + SCSS Modules + CSS Variables (`--pl-*`)
-  - Routes: `RootLayout` (SearchBar, ThemeSwitch, mobile Filters, logo) → `GamesPage` at `/` and `/games`
+  - Routes: `RootLayout` (logo + small nav + ThemeSwitch + mobile FAB Filters) → `GamesPage` at `/` and `/games`
   - Context API: filters (search/providers/types/favoritesOnly) and favorites map
   - Dark mode: toggles `.theme-dark`, respects system, persisted to localStorage
   - Mock API: `/public/api/mockGames.json`; `useGames()` adds delay, filtering, meta; filter/url sync
-  - Components: `GameCard`, `CardSkeleton`, `SearchBar`, `FilterChips`, `MobileFilterDrawer`, `GridSizeSwitch`, `Logo`
+  - Components: `GameCard`, `CardSkeleton`, `SearchBar`, `FilterChips`, `MobileFilterDrawer`, `GridSizeSwitch`, `Logo`, `HeaderBar`
   - A11y: focus-visible, role="switch", `aria-pressed`, `aria-live`, ESC, focus trap/restore, 44px targets
   - Micro-interactions: card hover lift, favorite pop (reduced motion fallback), theme transition (reduced motion off)
   - Persistence: favorites (`pl-favorites`), grid columns (`pl-grid-cols`)
 - What’s next
   - Provider logos refinement per brand, richer empty/error states, Storybook, PWA basics
+
+## Error state testing
+
+- The `useGames()` hook supports a temporary error simulation for manual QA.
+- Options:
+  - Toggle the constant in `src/hooks/useGames.ts`:
+    - `const FORCE_ERROR = true;` (default is `false`)
+  - Or pass a URL param: `?forceError=1`
+- When enabled, the data hook throws a simulated error so you can verify the Error UI and retry button.
+- Remember to set `FORCE_ERROR` back to `false` or remove the query param after testing.
+
+## Refetch (no page reload)
+
+- `useGames()` exposes `refetch()` which refreshes data without reloading the page.
+  - It clears the in-memory cache and re-runs the fetch, updating `loading`/`error` accordingly.
+  - Signature: `refetch(options?: { ignoreCache?: boolean }): Promise<void>`
+  - Typical use from UI: bind to a “Try again” button on error.
+  - DevTools quick test (in a component scope): call the returned `refetch()` to observe loading state changes.
+
+## Favorites filter behavior
+
+- The Favorites chip remains enabled during loading if there are any results in view.
+- It only disables during loading when there are zero results to interact with (prevents confusing dead-end state).
+- This applies to both desktop `FilterChips` and mobile `MobileFilterDrawer`.
 
 ## Design Tokens
 
@@ -155,6 +179,7 @@ Capture tips
 - Skeleton cards with staggered (negative-delay) pulse; reduced-motion disables stagger
 - Filters skeleton bar during loading
 - Debounced URL updates (≈250ms) and Search debounce (250ms)
+- Shared in-flight fetch avoids duplicate loads across components
 
 ## Styling & Architecture
 

@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
+  gap: var(--pl-space-4);
 }
 
 /* explicit overrides */
@@ -19,6 +19,6 @@
 }
 
 .count {
-  font-size: 14px;
+  font-size: 0.75rem;
   color: var(--pl-color-text-muted);
 }

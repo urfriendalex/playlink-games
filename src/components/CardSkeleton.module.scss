@@ -18,7 +18,7 @@
   background: color-mix(in oklab, var(--pl-color-surface-2) 80%, black 0%);
   height: 12px;
   border-radius: var(--pl-radius-sm);
-  animation: pl-pulse 1.6s infinite ease;
+  animation: pl-pulse 1.25s infinite ease;
 }
 
 .thumb {
@@ -26,14 +26,14 @@
   display: block;
   aspect-ratio: 16/9;
   background: var(--pl-color-surface-2);
-  animation: pl-pulse 1.6s infinite ease;
+  animation: pl-pulse 1.25s infinite ease;
 }
 
 /* Reserve space for two text lines roughly matching incoming card */
 .meta {
   padding: 12px;
   display: grid;
-  gap: 8px;
+  gap: var(--pl-space-2);
 }
 .title {
   height: 24px;
@@ -49,13 +49,13 @@
 $widths: 30, 40, 50, 60, 70, 80, 90;
 @each $w in $widths {
   .w#{$w} {
-    width: percentage($w / 100);
+    width: calc($w / 100 * 100%);
   }
 }
 
 /* Staggered animation using negative delays */
 @for $i from 1 through 12 {
-  $d: ($i - 1) * 60ms;
+  $d: ($i - 1) * 40ms;
   .root:nth-child(#{$i}) {
     .thumb,
     .block {

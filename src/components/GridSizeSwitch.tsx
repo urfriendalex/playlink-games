@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./GridSizeSwitch.module.scss";
 import cx from "clsx";
 
@@ -17,6 +17,11 @@ export default function GridSizeSwitch({
 }: GridSizeSwitchProps) {
   const [curr, setCurr] = useState<1 | 2 | 3 | 4>(value);
 
+  // Keep internal state in sync with parent-controlled value
+  useEffect(() => {
+    setCurr(value);
+  }, [value]);
+
   function set(cols: 1 | 2 | 3 | 4) {
     if (disabled) return;
     setCurr(cols);
@@ -25,7 +30,7 @@ export default function GridSizeSwitch({
 
   return (
     <div className={s.root} role="group" aria-label="Grid size">
-      <span className={s.label}>Grid</span>
+      <span className={s.label}>View: </span>
       {options.map((n) => {
         const active = curr === n;
         return (

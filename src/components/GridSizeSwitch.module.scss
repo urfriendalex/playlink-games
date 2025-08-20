@@ -1,21 +1,37 @@
 .root {
   display: inline-flex;
-  gap: 6px;
+  gap: var(--pl-space-2);
   align-items: center;
 }
 .label {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--pl-color-text-muted);
 }
 .btn {
-  min-height: 32px;
-  min-width: 32px;
-  border: 1px solid var(--pl-color-border);
-  border-radius: 8px;
-  background: var(--pl-color-surface);
+  font-size: 0.75rem;
+  min-height: 24px;
+  min-width: 24px;
+  border-radius: var(--pl-radius-md);
+  background: transparent;
   color: var(--pl-color-text);
-  padding: 4px 8px;
-}
-.active {
-  background: var(--pl-color-surface-2);
+  transition:
+    background var(--pl-dur-med) var(--pl-ease),
+    opacity var(--pl-dur-med) var(--pl-ease);
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: var(--pl-color-surface-2);
+  }
+
+  &.active {
+    background: var(--pl-color-surface-2);
+    border-color: var(--pl-color-border);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
 }

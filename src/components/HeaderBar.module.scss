@@ -1,0 +1,81 @@
+.rail {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--pl-space-4);
+}
+
+.container {
+  padding: var(--pl-space-2) var(--pl-space-4);
+  background-color: var(--pl-color-surface-overlay-1);
+  backdrop-filter: var(--pl-color-surface-backdrop-blur-3);
+  border-radius: var(--pl-radius-lg);
+  border: 1px solid var(--pl-color-border);
+}
+
+.left {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pl-space-4);
+  min-width: min(32rem, calc(100vw - var(--pl-space-4) * 4 - 42px));
+}
+
+.right {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pl-space-2);
+  padding: 0; // we need to remove the padding as the whole right container is a button
+}
+
+.nav {
+  display: inline-flex;
+  gap: var(--pl-space-4);
+  align-items: center;
+}
+
+/* Mobile FAB for opening filters */
+.fab {
+  position: fixed;
+  bottom: var(--pl-space-4);
+  left: var(--pl-space-4);
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 14px;
+  border-radius: var(--pl-radius-lg);
+  border: 1px solid var(--pl-color-border);
+  background-color: var(--pl-color-surface-overlay-1);
+  backdrop-filter: var(--pl-color-surface-backdrop-blur-3);
+  color: var(--pl-color-text);
+}
+.fab:hover {
+  background: var(--pl-color-surface-2);
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    gap: var(--pl-space-2);
+  }
+
+  :global(.link-underlined).link {
+    color: var(--pl-color-text);
+    font-size: 0.875rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px; /* touch target */
+    min-height: 32px;
+    border-radius: var(--pl-radius-md);
+
+    &::after,
+    &::before {
+      content: none;
+    }
+
+    &:hover {
+      &:hover,
+      &:focus {
+        background: var(--pl-color-surface-2);
+      }
+    }
+  }
+}

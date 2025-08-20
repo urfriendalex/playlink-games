@@ -16,19 +16,24 @@ export default function SearchBar() {
     };
   }, [dispatch]);
 
+  // keep local input in sync when filters are cleared/restored from URL
+  useEffect(() => {
+    setValue(state.filters.search);
+  }, [state.filters.search]);
+
   useEffect(() => {
     debounced(value);
   }, [value, debounced]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <label id={labelId} className="visually-hidden">
         Search games
       </label>
       <input
         aria-labelledby={labelId}
         type="search"
-        className="focus-ring rounded-md border border-[color:var(--pl-color-border)] bg-[color:var(--pl-color-surface)] px-3 py-2 text-sm"
+        className="focus-ring rounded-md border border-[color:var(--pl-color-border)] bg-[color:var(--pl-color-surface)] px-3 py-2 text-sm w-full md:w-[32rem] max-w-full"
         placeholder="Search games"
         value={value}
         onChange={(e) => setValue(e.target.value)}

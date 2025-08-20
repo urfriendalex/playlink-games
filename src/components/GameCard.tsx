@@ -20,7 +20,7 @@ export default function GameCard({ game }: { game: Game }) {
   const imgClass = cx(s.thumb, imgError && s.placeholder);
 
   return (
-    <article className={cx("card card--hoverlift", s.card)}>
+    <article className={cx("card", s.card)}>
       <div className={s.thumbWrap}>
         <img
           className={imgClass}

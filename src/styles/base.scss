@@ -14,6 +14,12 @@ body {
     color var(--pl-dur-med) var(--pl-ease);
 }
 
+/* placeholders follow theme muted color */
+input::placeholder {
+  color: var(--pl-color-text-muted);
+  opacity: 1; /* ensure color shows in all browsers */
+}
+
 /* accessibility helpers */
 .visually-hidden {
   position: absolute;
@@ -35,20 +41,16 @@ body {
     box-shadow var(--pl-dur-med) var(--pl-ease);
 }
 
-.card--hoverlift {
-  @apply will-change-transform;
-}
-.card--hoverlift:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--pl-shadow-2);
-}
-
 .btn {
   background: var(--pl-color-surface-2);
   border: 1px solid var(--pl-color-border);
   border-radius: var(--pl-radius-md);
-  padding: 8px 12px;
+  padding: 4px 12px;
   transition: all var(--pl-dur-med) var(--pl-ease);
+
+  &:hover {
+    background: var(--pl-color-surface-2);
+  }
 }
 
 .focus-ring:focus-visible {
@@ -71,4 +73,46 @@ body {
   body {
     transition: none;
   }
+}
+
+@mixin link-underlined-style {
+  color: var(--pl-color-text);
+  font-weight: 400;
+  font-size: 0.75rem;
+  position: relative;
+  text-decoration: none;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: var(--pl-color-text-muted);
+    top: calc(100% - 2px);
+    left: 0;
+    pointer-events: none;
+  }
+
+  &::after {
+    background: transparent;
+  }
+
+  &::before {
+    transform-origin: 100% 50%;
+    transform: scale3d(0, 1, 1);
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    &::before {
+      transform-origin: 0% 50%;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
+
+// Use the mixin for link-underlined
+.link-underlined {
+  @include link-underlined-style;
 }
